@@ -14,8 +14,8 @@ class HomePageDes extends StatelessWidget {
       create: (context) => UIBloc(),
       child: Scaffold(
         body: Row(
-          children: [
-            const Sidebar(),
+          children: const [
+            Sidebar(),
 
             Expanded(
               child: ContentArea(),
