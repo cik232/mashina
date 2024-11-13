@@ -1,4 +1,4 @@
-import 'package:mashina_test/data/models/item_model/item_model.dart';
+import '../../data/models/item_model/item_model.dart';
 
 import '../../data/content_type/content_type.dart';
 

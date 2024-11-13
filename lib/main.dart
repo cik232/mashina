@@ -1,12 +1,11 @@
-import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mashina_test/logic/ui_bloc/ui_bloc.dart';
-import 'package:mashina_test/logic/ui_bloc/ui_event.dart';
-import 'package:mashina_test/logic/ui_bloc/ui_state.dart';
-import 'package:mashina_test/peresentation/main_screen/home_page/home_page.dart';
-import 'package:mashina_test/peresentation/main_screen/home_page/home_page_des.dart';
+import 'logic/ui_bloc/ui_bloc.dart';
+import 'logic/ui_bloc/ui_event.dart';
+import 'logic/ui_bloc/ui_state.dart';
+import 'peresentation/main_screen/home_page/home_page.dart';
+import 'peresentation/main_screen/home_page/home_page_des.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {

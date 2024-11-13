@@ -5,18 +5,24 @@ class SettingsLanguageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    double dividerWidth = screenWidth * 0.001;
+    double dividerHeight = screenHeight * 0.2;
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            padding:const EdgeInsets.all(20),
+            margin:const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black12,
                   blurRadius: 10,
@@ -27,7 +33,9 @@ class SettingsLanguageScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Column(
+                const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Icon(Icons.language, size: 50, color: Color(0xFF274D68)),
                     SizedBox(height: 10),
@@ -41,44 +49,48 @@ class SettingsLanguageScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                VerticalDivider(
-                  color: Colors.grey,
-                  thickness: 1,
-                ),
+                // VerticalDivider(
+                //   color: Colors.grey,
+                //   thickness: 1,
+                // ),
+                _buildDivider(dividerWidth, dividerHeight),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
-                        color: Color(0xFF274D68),
+                        color: const Color(0xFF274D68),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(
+                      child: const Text(
                         "O'zbekcha",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(
+                      child: const Text(
                         "Ўзбекча",
                         style: TextStyle(color: Color(0xFF274D68)),
                       ),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(
+                      child: const Text(
                         "Русский",
                         style: TextStyle(color: Color(0xFF274D68)),
                       ),
@@ -93,13 +105,13 @@ class SettingsLanguageScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  margin:const EdgeInsets.symmetric(horizontal: 15),
                   height: 60,
                   decoration: BoxDecoration(
                     color: Colors.purple,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "ONE ID",
                       style: TextStyle(
@@ -113,13 +125,13 @@ class SettingsLanguageScreen extends StatelessWidget {
               ),
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
                   height: 60,
                   decoration: BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -140,6 +152,26 @@ class SettingsLanguageScreen extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildDivider(double width, double height) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.white,
+            const Color(0xFF274D68),
+            const Color(0xFF274D68).withOpacity(0.9),
+            Colors.white,
+          ],
+        ),
       ),
     );
   }

@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsSecurityScreen extends StatefulWidget {
-   SettingsSecurityScreen({super.key});
+   const SettingsSecurityScreen({super.key});
 
   @override
   State<SettingsSecurityScreen> createState() => _SettingsSecurityScreenState();
@@ -11,10 +10,10 @@ class SettingsSecurityScreen extends StatefulWidget {
 class _SettingsSecurityScreenState extends State<SettingsSecurityScreen> {
    bool lightOne = true;
 
-  final MaterialStateProperty<Icon?> thumbIcon =
-  MaterialStateProperty.resolveWith<Icon?>(
-        (Set<MaterialState> states) {
-      if (states.contains(MaterialState.selected)) {
+  final WidgetStateProperty<Icon?> thumbIcon =
+  WidgetStateProperty.resolveWith<Icon?>(
+        (Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
         return const Icon(Icons.fingerprint_outlined,color: Colors.white,);
       }
       return const Icon(Icons. circle_outlined);
@@ -26,7 +25,7 @@ class _SettingsSecurityScreenState extends State<SettingsSecurityScreen> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding:const EdgeInsets.all(20),
         // margin: EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
@@ -34,21 +33,21 @@ class _SettingsSecurityScreenState extends State<SettingsSecurityScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Icon(
                Icons.verified_user,
                size: 100,
                color: Color(0xFF274D68),
             ),
-            SizedBox(height: 20),
-            Container(
+            const SizedBox(height: 20),
+            SizedBox(
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF274D68), // Background color
+                  backgroundColor: const Color(0xFF274D68), // Background color
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 onPressed: () {
                   // Handle contacts action
@@ -61,29 +60,29 @@ class _SettingsSecurityScreenState extends State<SettingsSecurityScreen> {
                       Row(
                         children: [
                           Image.asset(height: 27,'assets/app_icon/call_icon.png'),
-                          SizedBox(width: 10),
-                          Text(
+                          const SizedBox(width: 10),
+                          const Text(
                             "Kontaktlar",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],
                       ),
-                      Icon(Icons.arrow_forward_ios, color: Colors.white),
+                      const Icon(Icons.arrow_forward_ios, color: Colors.white),
                     ],
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 10),
-            Container(
+            const SizedBox(height: 10),
+            SizedBox(
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF274D68), // Background color
+                  backgroundColor: const Color(0xFF274D68), // Background color
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 onPressed: () {
                   // Handle contacts action
@@ -93,7 +92,7 @@ class _SettingsSecurityScreenState extends State<SettingsSecurityScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
+                      const Row(
                         children: [
                           Icon(Icons.fingerprint_outlined, color: Colors.white),
                           SizedBox(width: 10),
@@ -111,7 +110,7 @@ class _SettingsSecurityScreenState extends State<SettingsSecurityScreen> {
                             lightOne = value;
                           });
                         },
-                        activeColor: Color(0xFF274D68), // Thumb (dumaloq) tugmasining rangi
+                        activeColor: const Color(0xFF274D68), // Thumb (dumaloq) tugmasining rangi
                         activeTrackColor: Colors.grey[400], // Track (yo'l)ning rangi
                         inactiveThumbColor: Colors.grey, // Thumb tugmasining rangi
                         inactiveTrackColor: Colors.grey[400], // Track yo'lning rangi

@@ -13,7 +13,7 @@ class Categore extends StatelessWidget {
     double dividerWidth = screenWidth * 0.004;
     double dividerHeight = screenHeight * 0.2; // Balandlikni ekran foiziga bog'lash
 
-    return Container(
+    return SizedBox(
       height: 120,
       width: screenWidth,
       child: Center(
@@ -35,7 +35,6 @@ class Categore extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 
   Widget _buildCategoryItem(String imagePath, String title, double imageWidth) {
@@ -51,7 +50,7 @@ class Categore extends StatelessWidget {
         ),
         Text(
           title,
-          style: TextStyle(fontSize: 12, color: Color(0xFF274D68),),
+          style: const TextStyle(fontSize: 12, color: Color(0xFF274D68),),
           textAlign: TextAlign.center,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
@@ -71,8 +70,8 @@ class Categore extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             Colors.white,
-            Color(0xFF274D68),
-            Color(0xFF274D68).withOpacity(0.9),
+            const Color(0xFF274D68),
+            const Color(0xFF274D68).withOpacity(0.9),
           ],
         ),
       ),

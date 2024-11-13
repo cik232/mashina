@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mashina_test/data/models/item_model/item_model.dart';
+import '../../../data/models/item_model/item_model.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import '../../../logic/ui_bloc/ui_state.dart';
 
 class ItemCard extends StatelessWidget {
   final ItemModel item;
 
-  const ItemCard({Key? key, required this.item}) : super(key: key);
+  const ItemCard({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class ItemCard extends StatelessWidget {
                         "${(item.progress * 100).toInt()}%",
                         style: TextStyle(fontSize: indicatorRadius * 0.4),
                       ),
-                      progressColor: item.isExpired ? Colors.red : Color(0xFF274D68),
+                      progressColor: item.isExpired ? Colors.red : const Color(0xFF274D68),
                       backgroundColor: Colors.grey.shade300,
                     ),
                     const SizedBox(width: 40),
@@ -57,7 +56,7 @@ class ItemCard extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                             decoration: BoxDecoration(
-                              color: item.isExpired ? Colors.red : Color(0xFF274D68),
+                              color: item.isExpired ? Colors.red : const Color(0xFF274D68),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(

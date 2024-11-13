@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 class CarProgressBar extends StatefulWidget {
+  const CarProgressBar({super.key});
+
   @override
   _CarProgressBarState createState() => _CarProgressBarState();
 }

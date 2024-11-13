@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Cervike extends StatelessWidget {
@@ -6,9 +5,6 @@ class Cervike extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    final screenWidth = mediaQuery.size.width;
-    final screenHeight = mediaQuery.size.height;
 
     // Asosiy konteyner va karta o'lchamlari
     double mainContainerWidth = 400.0; // Asosiy konteyner kengligi
@@ -20,7 +16,7 @@ class Cervike extends StatelessWidget {
     double imageSize = 40.0; // Rasm o'lchami
 
     return Center(
-      child: Container(
+      child: SizedBox(
         width: mainContainerWidth,
         height: mainContainerHeight,
         child: Column(
@@ -35,7 +31,7 @@ class Cervike extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
-                      child: Container(
+                      child: SizedBox(
                         height: cardHeight,
                         width: cardWidth,
                         child: Padding(
@@ -70,7 +66,7 @@ class Cervike extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),
                       ),
-                      child: Container(
+                      child: SizedBox(
                         height: cardHeight,
                         width: cardWidth,
                         child: Padding(
@@ -108,7 +104,7 @@ class Cervike extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),
-                  child: Container(
+                  child: SizedBox(
                     height: largeCardHeight,
                     width: largeCardWidth,
                     child: Padding(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CarSlider extends StatefulWidget {
+  const CarSlider({super.key});
+
   @override
   _CarSliderState createState() => _CarSliderState();
 }
@@ -24,7 +26,7 @@ class _CarSliderState extends State<CarSlider> {
       });
       _pageController.animateToPage(
         _currentPage,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
@@ -37,7 +39,7 @@ class _CarSliderState extends State<CarSlider> {
       });
       _pageController.animateToPage(
         _currentPage,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
@@ -46,7 +48,7 @@ class _CarSliderState extends State<CarSlider> {
   void _goToAddCar() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => GarageScreen()),
+      MaterialPageRoute(builder: (context) => const GarageScreen()),
     );
   }
 
@@ -55,7 +57,7 @@ class _CarSliderState extends State<CarSlider> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
+        SizedBox(
           height: 200,
           child: Center(
             child: Stack(
@@ -64,7 +66,7 @@ class _CarSliderState extends State<CarSlider> {
                 Expanded(
                   child: PageView.builder(
                     controller: _pageController,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: carImages.length + 1,
                     itemBuilder: (context, index) {
                       if (index == carImages.length) {
@@ -74,11 +76,11 @@ class _CarSliderState extends State<CarSlider> {
                             child: Container(
                               width: 60,
                               height: 60,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF274D68),
                                 shape: BoxShape.circle,
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.add,
                                 size: 40,
                                 color: Colors.white,
@@ -88,7 +90,7 @@ class _CarSliderState extends State<CarSlider> {
                         );
                       } else {
                         return Center(
-                          child: Container(
+                          child: SizedBox(
                             width: MediaQuery.of(context).size.width *
                                 0.8,
                             height: MediaQuery.of(context).size.height *
@@ -115,7 +117,7 @@ class _CarSliderState extends State<CarSlider> {
                 Positioned(
                   left: 15,
                   child: IconButton(
-                    icon: Icon(Icons.arrow_back_ios),
+                    icon: const Icon(Icons.arrow_back_ios),
                     iconSize: 40,
                     color: Colors.black,
                     onPressed: _previousPage,
@@ -124,7 +126,7 @@ class _CarSliderState extends State<CarSlider> {
                 Positioned(
                   right: 8,
                   child: IconButton(
-                    icon: Icon(Icons.arrow_forward_ios),
+                    icon: const Icon(Icons.arrow_forward_ios),
                     iconSize: 40,
                     color: Colors.black,
                     onPressed: _nextPage,
@@ -139,13 +141,13 @@ class _CarSliderState extends State<CarSlider> {
             mainAxisSize: MainAxisSize.min,
             children: List.generate(carImages.length + 1, (index) {
               return AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                margin: EdgeInsets.symmetric(horizontal: 4.0),
+                duration: const Duration(milliseconds: 300),
+                margin: const EdgeInsets.symmetric(horizontal: 4.0),
                 width: _currentPage == index ? 12.0 : 8.0,
                 height: _currentPage == index ? 12.0 : 8.0,
                 decoration: BoxDecoration(
                   color:
-                      _currentPage == index ? Color(0xFF274D68) : Colors.grey,
+                      _currentPage == index ? const Color(0xFF274D68) : Colors.grey,
                   shape: BoxShape.circle,
                 ),
               );
@@ -161,7 +163,7 @@ class CylinderPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint rectPaint = Paint()
-      ..shader = LinearGradient(
+      ..shader = const LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [Colors.yellow, Colors.white],
@@ -174,7 +176,7 @@ class CylinderPainter extends CustomPainter {
     canvas.drawRect(rect, rectPaint);
 
     Paint ovalPaint = Paint()
-      ..shader = LinearGradient(
+      ..shader = const LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [Colors.yellow, Colors.white],
@@ -187,8 +189,8 @@ class CylinderPainter extends CustomPainter {
 
     Paint shadowPaint = Paint()
       ..color = Colors.black.withOpacity(0.2)
-      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 10.0);
-    canvas.drawRect(rect.shift(Offset(0, 10)), shadowPaint);
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10.0);
+    canvas.drawRect(rect.shift(const Offset(0, 10)), shadowPaint);
   }
 
   @override
@@ -196,14 +198,16 @@ class CylinderPainter extends CustomPainter {
 }
 
 class GarageScreen extends StatelessWidget {
+  const GarageScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add New Car'),
+        title: const Text('Add New Car'),
         backgroundColor: Colors.yellow[700],
       ),
-      body: Center(
+      body: const Center(
         child: Text('Here you can add a new car!'),
       ),
     );

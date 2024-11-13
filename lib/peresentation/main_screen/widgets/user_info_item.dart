@@ -18,7 +18,7 @@ class UserInfoItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 title,
-                style: TextStyle(fontSize: 14, color: Colors.grey),
+                style: const TextStyle(fontSize: 14, color: Colors.grey),
                 textAlign: TextAlign.start,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
@@ -28,7 +28,7 @@ class UserInfoItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 value,
-                style: TextStyle(fontSize: 12, color: Colors.black),
+                style: const TextStyle(fontSize: 12, color: Colors.black),
                 textAlign: TextAlign.right,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,

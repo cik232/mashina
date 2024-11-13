@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mashina_test/logic/ui_bloc/ui_bloc.dart';
-import 'package:mashina_test/logic/ui_bloc/ui_state.dart';
-import 'package:mashina_test/logic/ui_bloc/ui_event.dart';
+import '../../../logic/ui_bloc/ui_bloc.dart';
+import '../../../logic/ui_bloc/ui_state.dart';
+import '../../../logic/ui_bloc/ui_event.dart';
 import '../../../data/content_type/content_type.dart';
 import 'item_card.dart';
 
@@ -56,7 +56,7 @@ class TimeProgrest extends StatelessWidget {
             },
           );
         }
-        return Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }

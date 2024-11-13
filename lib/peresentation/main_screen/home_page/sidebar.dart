@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mashina_test/peresentation/main_screen/widgets/carslider.dart';
-import 'package:mashina_test/peresentation/main_screen/widgets/categore.dart';
+import '../widgets/carslider.dart';
+import '../widgets/categore.dart';
 
 import '../../../data/content_type/content_type.dart';
 import '../../../data/models/car_model/car_model.dart';
@@ -13,6 +13,8 @@ import '../widgets/cervike.dart';
 import '../widgets/user_info_item.dart';
 
 class Sidebar extends StatelessWidget {
+  const Sidebar({super.key});
+
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> userInfoData = [
@@ -48,7 +50,7 @@ class Sidebar extends StatelessWidget {
             children: [
               Container(
                 height: 150,
-                color: Color(0xFF274D68),
+                color: const Color(0xFF274D68),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -66,7 +68,7 @@ class Sidebar extends StatelessWidget {
                           child: CircleAvatar(
                             backgroundColor: Colors.white,
                             radius: 10,
-                            child: const Icon(
+                            child: Icon(
                               Icons.verified,
                               color: Colors.blue,
                               size: 14,
@@ -91,8 +93,8 @@ class Sidebar extends StatelessWidget {
                 ),
               ),
               const Padding(
-                padding: const EdgeInsets.only(left: 8),
-                child: const Text(
+                padding: EdgeInsets.only(left: 8),
+                child: Text(
                   'Chevrolet',
                   style: TextStyle(
                       fontSize: 24,
@@ -101,13 +103,13 @@ class Sidebar extends StatelessWidget {
                 ),
               ),
               const Padding(
-                padding: const EdgeInsets.only(left: 8),
-                child: const Text(
+                padding: EdgeInsets.only(left: 8),
+                child: Text(
                   'Cobalt',
                   style: TextStyle(fontSize: 16, color: Color(0xFF5A5A5A),),
                 ),
               ),
-              CarSlider(),
+              const CarSlider(),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -116,12 +118,12 @@ class Sidebar extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 10),
                     child: CarNumber(car: CarModel.car[0]),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Categore(),
+                  const Categore(),
                   const Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Cervike(),
                   ),
                 ],
@@ -142,7 +144,7 @@ class Sidebar extends StatelessWidget {
               //   ),
               // ),
               ListTile(
-                title: Text(
+                title: const Text(
                   "Avtomobil toifasi",
                   style: TextStyle(fontSize: 12, color: Colors.black45),
                 ),
@@ -153,7 +155,7 @@ class Sidebar extends StatelessWidget {
                   );
                 },
               ),
-              BuildCarLicenseSection()
+              const BuildCarLicenseSection()
             ],
           );
         },

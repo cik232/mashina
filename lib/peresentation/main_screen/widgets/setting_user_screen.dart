@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SettingUserScreen extends StatefulWidget {
+  const SettingUserScreen({super.key});
+
   @override
   State<SettingUserScreen> createState() => _SettingUserScreenState();
 }
@@ -9,19 +11,19 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
   bool lightOne = true;
   bool lightTwo = true;
 
-  final MaterialStateProperty<Icon?> thumbIcon =
-  MaterialStateProperty.resolveWith<Icon?>(
-        (Set<MaterialState> states) {
-      if (states.contains(MaterialState.selected)) {
+  final WidgetStateProperty<Icon?> thumbIcon =
+  WidgetStateProperty.resolveWith<Icon?>(
+        (Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
         return const Icon(Icons.check,color: Colors.white,);
       }
       return const Icon(Icons.close);
     },
   );
-  final MaterialStateProperty<Icon?> thumbIconOne =
-  MaterialStateProperty.resolveWith<Icon?>(
-        (Set<MaterialState> states) {
-      if (states.contains(MaterialState.selected)) {
+  final WidgetStateProperty<Icon?> thumbIconOne =
+  WidgetStateProperty.resolveWith<Icon?>(
+        (Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
         return const Icon(Icons.dark_mode_outlined,color: Colors.white,);
       }
       return const Icon(Icons.light_mode_outlined);
@@ -39,11 +41,11 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
             // Profile Card
             Flexible(
               child: Container(
-                padding: EdgeInsets.all(16),
+                padding:const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
+                  boxShadow:const [
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 10,
@@ -56,9 +58,9 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                   children: [
                     const CircleAvatar(
                       radius: 30,
-                      backgroundImage: AssetImage('assets/user_image.jpg'),
+                      backgroundImage: AssetImage('assets/user_info/user_imag.jpeg'),
                     ),
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                     Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +94,7 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                       ),
                     ),
                     IconButton(
-                      icon: Icon(Icons.edit, color: Colors.blue),
+                      icon: const Icon(Icons.edit, color: Colors.blue),
                       onPressed: () {
                         // Edit action
                       },
@@ -101,7 +103,7 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Notification and Theme Cards
             Row(
@@ -109,11 +111,11 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                 // Notification Card
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black12,
                           blurRadius: 10,
@@ -125,8 +127,8 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.notifications, color: Color(0xFF274D68), size: 30),
-                        SizedBox(height: 10),
+                        const Icon(Icons.notifications, color: Color(0xFF274D68), size: 30),
+                        const SizedBox(height: 10),
                         const Text(
                           "Bildirishnoma",
                           style: TextStyle(fontSize: 16),
@@ -139,7 +141,7 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                               lightOne = value;
                             });
                           },
-                          activeColor: Color(0xFF274D68), // Thumb (dumaloq) tugmasining rangi
+                          activeColor: const Color(0xFF274D68), // Thumb (dumaloq) tugmasining rangi
                           activeTrackColor: Colors.grey[400], // Track (yo'l)ning rangi
                           inactiveThumbColor: Colors.grey, // Thumb tugmasining rangi
                           inactiveTrackColor: Colors.grey[400], // Track yo'lning rangi
@@ -148,16 +150,16 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                     ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
 
                 // Theme Card
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black12,
                           blurRadius: 10,
@@ -169,9 +171,9 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.brightness_3, color: Color(0xFF274D68), size: 30),
-                        SizedBox(height: 10),
-                        Text(
+                        const Icon(Icons.brightness_3, color: Color(0xFF274D68), size: 30),
+                        const SizedBox(height: 10),
+                        const Text(
                           "Mavzu",
                           style: TextStyle(fontSize: 16),
                         ),
@@ -183,7 +185,7 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                               lightTwo = value;
                             });
                           },
-                          activeColor: Color(0xFF274D68), // Thumb (dumaloq) tugmasining rangi
+                          activeColor: const Color(0xFF274D68), // Thumb (dumaloq) tugmasining rangi
                           activeTrackColor: Colors.grey[400], // Track (yo'l)ning rangi
                           inactiveThumbColor: Colors.grey, // Thumb tugmasining rangi
                           inactiveTrackColor: Colors.grey[400], // Track yo'lning rangi
