@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mashina_test/peresentation/main_screen/widgets/test_ui.dart';
 import '../../../logic/ui_bloc/ui_bloc.dart';
 import '../../../logic/ui_bloc/ui_state.dart';
 import '../widgets/setting_support_screen.dart';
@@ -30,10 +31,11 @@ class AppSettings extends StatelessWidget {
                 childAspectRatio = 1;
               } else if (containerWidth > 600) {
                 crossAxisCount = 2;
-                childAspectRatio = 1.4;
+                childAspectRatio = 1.2;
               } else {
                 crossAxisCount = 1;
-                childAspectRatio = 1.1;
+                childAspectRatio = 1.4;
+                containerWidth = 1.4;
               }
 
               // List of setting screens to display
@@ -57,15 +59,9 @@ class AppSettings extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final item = items[index];
                   return GestureDetector(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      elevation: 4,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: item, // Display each setting screen widget
-                      ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: item, // Display each setting screen widget
                     ),
                   );
                 },

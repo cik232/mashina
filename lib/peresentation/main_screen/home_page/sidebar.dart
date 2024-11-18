@@ -151,7 +151,7 @@ class Sidebar extends StatelessWidget {
                 onTap: () {
                   // Bosilganda `SelectContentEvent` yuboriladi
                   BlocProvider.of<UIBloc>(context).add(
-                    SelectContentEvent(ContentType.driverLicense),
+                    SelectContentEvent(ContentType.drivers_license_screen),
                   );
                 },
               ),

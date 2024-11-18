@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../data/content_type/content_type.dart';
+import '../../../logic/ui_bloc/ui_bloc.dart';
+import '../../../logic/ui_bloc/ui_event.dart';
 
 class Categore extends StatelessWidget {
   const Categore({super.key});
@@ -9,9 +14,11 @@ class Categore extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
 
     // Rasmlar uchun kenglik proporsiyasi
-    double imageWidthFactor = screenWidth * 0.1; // Chiziqning kengligi va balandligini proporsional qilish
+    double imageWidthFactor = screenWidth *
+        0.1; // Chiziqning kengligi va balandligini proporsional qilish
     double dividerWidth = screenWidth * 0.004;
-    double dividerHeight = screenHeight * 0.2; // Balandlikni ekran foiziga bog'lash
+    double dividerHeight =
+        screenHeight * 0.2; // Balandlikni ekran foiziga bog'lash
 
     return SizedBox(
       height: 120,
@@ -20,17 +27,45 @@ class Categore extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _buildCategoryItem('assets/app_icon/jarima_m.png', 'Jarimalar\n',
-                imageWidthFactor),
+            InkWell(
+              onTap: () {
+                BlocProvider.of<UIBloc>(context).add(
+                  SelectContentEvent(ContentType.fine_screen),
+                );
+              },
+              child: _buildCategoryItem('assets/app_icon/jarima_m.png',
+                  'Jarimalar\n', imageWidthFactor),
+            ),
             _buildDivider(dividerWidth, dividerHeight),
-            _buildCategoryItem('assets/app_icon/shina_m.png',
-                'Avtomobil\nbo’limi', imageWidthFactor),
+            InkWell(
+              onTap: () {
+                BlocProvider.of<UIBloc>(context).add(
+                  SelectContentEvent(ContentType.car_screen),
+                );
+              },
+              child: _buildCategoryItem('assets/app_icon/shina_m.png',
+                  'Avtomobil\nbo’limi', imageWidthFactor),
+            ),
             _buildDivider(dividerWidth, dividerHeight),
-            _buildCategoryItem('assets/app_icon/book_m.png', 'Yo’l\nkitobchasi',
-                imageWidthFactor),
+            InkWell(
+              onTap: () {
+                BlocProvider.of<UIBloc>(context).add(
+                  SelectContentEvent(ContentType.book_screen),
+                );
+              },
+              child: _buildCategoryItem('assets/app_icon/book_m.png',
+                  'Yo’l\nkitobchasi', imageWidthFactor),
+            ),
             _buildDivider(dividerWidth, dividerHeight),
-            _buildCategoryItem('assets/app_icon/lokation_m.png', 'Yo’l\nkitobchasi',
-                imageWidthFactor),
+            InkWell(
+              onTap: () {
+                BlocProvider.of<UIBloc>(context).add(
+                  SelectContentEvent(ContentType.location_screen),
+                );
+              },
+              child: _buildCategoryItem('assets/app_icon/lokation_m.png',
+                  'Yo’l\nkitobchasi', imageWidthFactor),
+            ),
           ],
         ),
       ),
@@ -50,7 +85,10 @@ class Categore extends StatelessWidget {
         ),
         Text(
           title,
-          style: const TextStyle(fontSize: 12, color: Color(0xFF274D68),),
+          style: const TextStyle(
+            fontSize: 12,
+            color: Color(0xFF274D68),
+          ),
           textAlign: TextAlign.center,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,

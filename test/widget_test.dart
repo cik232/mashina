@@ -7,13 +7,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mashina_test/logic/ui_bloc/ui_bloc.dart';
 
 import 'package:mashina_test/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+
+    final uiBloc = UIBloc();
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp(uiBloc: null,));
+    await tester.pumpWidget(MyApp(uiBloc: UIBloc(),));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

@@ -32,7 +32,7 @@ class TimeProgrest extends StatelessWidget {
                 childAspectRatio = 1.4;
               } else {
                 crossAxisCount = 1;
-                childAspectRatio = 1.7; // kichik ekranlar uchun
+                childAspectRatio = 1.9; // kichik ekranlar uchun
               }
 
               return GridView.count(
@@ -47,7 +47,9 @@ class TimeProgrest extends StatelessWidget {
                   final item = state.items[index];
                   return GestureDetector(
                     onTap: () {
-                      context.read<UIBloc>().add(SelectContentEvent(ContentType.values[index]));
+                      context
+                          .read<UIBloc>()
+                          .add(SelectContentEvent(ContentType.values[index]));
                     },
                     child: ItemCard(item: item),
                   );

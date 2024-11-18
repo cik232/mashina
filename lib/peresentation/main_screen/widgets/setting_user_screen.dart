@@ -12,19 +12,20 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
   bool lightTwo = true;
 
   final WidgetStateProperty<Icon?> thumbIcon =
-  WidgetStateProperty.resolveWith<Icon?>(
-        (Set<WidgetState> states) {
+      WidgetStateProperty.resolveWith<Icon?>(
+    (Set<WidgetState> states) {
       if (states.contains(WidgetState.selected)) {
-        return const Icon(Icons.check,color: Colors.white,);
+        return const Icon(Icons.check, color: Colors.white);
       }
       return const Icon(Icons.close);
     },
   );
+
   final WidgetStateProperty<Icon?> thumbIconOne =
-  WidgetStateProperty.resolveWith<Icon?>(
-        (Set<WidgetState> states) {
+      WidgetStateProperty.resolveWith<Icon?>(
+    (Set<WidgetState> states) {
       if (states.contains(WidgetState.selected)) {
-        return const Icon(Icons.dark_mode_outlined,color: Colors.white,);
+        return const Icon(Icons.dark_mode_outlined, color: Colors.white);
       }
       return const Icon(Icons.light_mode_outlined);
     },
@@ -32,20 +33,26 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            // Profile Card
-            Flexible(
-              child: Container(
-                padding:const EdgeInsets.all(16),
+    return Container(
+      color: Colors.transparent,
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          double containerWidth = constraints.maxWidth;
+          double containerHeight = constraints.maxHeight;
+
+          double widgetSize(BuildContext context, double scale) {
+            return (containerWidth + containerHeight) / 2 * scale;
+          }
+
+          return Column(
+            children: [
+              Container(
+                height: containerHeight * 0.4,
+                width: containerWidth,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
-                  boxShadow:const [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 10,
@@ -54,64 +61,74 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                     ),
                   ],
                 ),
-                child: Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('assets/user_info/user_imag.jpeg'),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Row(
-                            children: [
-                              Text(
-                                "Nickname",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(width: 4),
-                              Icon(
-                                Icons.check_circle,
-                                color: Colors.blue,
-                                size: 18,
-                              ),
-                            ],
-                          ),
-                          Text(
-                            "+998 90 123 45 67",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[700],
-                            ),
-                          ),
-                        ],
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: CircleAvatar(
+                          radius: 40,
+                          // widgetSize(context, 0.15),
+                          backgroundImage:
+                          AssetImage('assets/user_info/user_imag.jpeg'),
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.edit, color: Colors.blue),
-                      onPressed: () {
-                        // Edit action
-                      },
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.all(4.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: const[
+                                Text(
+                                  "Nickname",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(width: 4),
+                                Icon(
+                                  Icons.check_circle,
+                                  color: Colors.blue,
+                                  size: 24,
+                                ),
+                              ],
+                            ),
+                            Text(
+                              "+998 90 123 45 67",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey[700],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: IconButton(
+                          color: Color(0xFF274D68),
+                          icon: Icon(Icons.edit, color: Colors.blue,
+                            size: widgetSize(context, 0.1),),
+                          onPressed: () {},
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-
-            // Notification and Theme Cards
-            Row(
-              children: [
-                // Notification Card
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: containerHeight * 0.55,
+                    width: containerWidth * 0.48,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
@@ -124,38 +141,43 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                         ),
                       ],
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.notifications, color: Color(0xFF274D68), size: 30),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Bildirishnoma",
-                          style: TextStyle(fontSize: 16),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min, // Yig'ib olish uchun
+                          children: [
+                            const Icon(Icons.notifications,
+                                color: Color(0xFF274D68), size: 40),
+                            const SizedBox(height: 20),
+                            const Text(
+                              "Bildirishnoma",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            const SizedBox(height: 20),
+                            Switch(
+                              thumbIcon: thumbIcon,
+                              value: lightOne,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  lightOne = value;
+                                });
+                              },
+                              activeColor: const Color(0xFF274D68),
+                              activeTrackColor: Colors.grey[400],
+                              inactiveThumbColor: Colors.grey,
+                              inactiveTrackColor: Colors.grey[400],
+                            ),
+                          ],
                         ),
-                        Switch(
-                          thumbIcon: thumbIcon,
-                          value: lightOne,
-                          onChanged: (bool value) {
-                            setState(() {
-                              lightOne = value;
-                            });
-                          },
-                          activeColor: const Color(0xFF274D68), // Thumb (dumaloq) tugmasining rangi
-                          activeTrackColor: Colors.grey[400], // Track (yo'l)ning rangi
-                          inactiveThumbColor: Colors.grey, // Thumb tugmasining rangi
-                          inactiveTrackColor: Colors.grey[400], // Track yo'lning rangi
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 16),
-
-                // Theme Card
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
+                  SizedBox(height: 20),
+                  Container(
+                    height: containerHeight * 0.55,
+                    width: containerWidth * 0.48,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
@@ -168,36 +190,44 @@ class _SettingUserScreenState extends State<SettingUserScreen> {
                         ),
                       ],
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.brightness_3, color: Color(0xFF274D68), size: 30),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "Mavzu",
-                          style: TextStyle(fontSize: 16),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min, // Yig'ib olish uchun
+                          children: [
+                            const Icon(Icons.brightness_3,
+                                color: Color(0xFF274D68), size: 40),
+                            const SizedBox(height: 20),
+                            const Text(
+                              "Mavzu",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            const SizedBox(height: 20),
+                            Switch(
+                              thumbIcon: thumbIconOne,
+                              value: lightTwo,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  lightTwo = value;
+                                });
+                              },
+                              activeColor: const Color(0xFF274D68),
+                              activeTrackColor: Colors.grey[400],
+                              inactiveThumbColor: Colors.grey,
+                              inactiveTrackColor: Colors.grey[400],
+                            ),
+                          ],
                         ),
-                        Switch(
-                          thumbIcon: thumbIconOne,
-                          value: lightTwo,
-                          onChanged: (bool value) {
-                            setState(() {
-                              lightTwo = value;
-                            });
-                          },
-                          activeColor: const Color(0xFF274D68), // Thumb (dumaloq) tugmasining rangi
-                          activeTrackColor: Colors.grey[400], // Track (yo'l)ning rangi
-                          inactiveThumbColor: Colors.grey, // Thumb tugmasining rangi
-                          inactiveTrackColor: Colors.grey[400], // Track yo'lning rangi
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
+                ],
+              )
+            ],
+          );
+        },
       ),
     );
   }
